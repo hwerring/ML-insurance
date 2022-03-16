@@ -99,10 +99,11 @@ def plotting(X, y, theta):
 
 theta =  [0,0,0,0,0,0,0] # Assigns theta0 as a vector of zeroes
 alpha1 = 0.1 # Sets learning rate to 0.1
-for i in range(10):
-    theta = gradient_descent_LMS(X_new, y, theta, alpha1) # Applies gradient descent algorithm 10 times 
-    print(theta)
-print(cost_LMS(X_new, y, theta))
+for i in range(100):
+    theta = gradient_descent_LMS(X_new, y, theta, alpha1) # Applies gradient descent algorithm 100 times
+    if i % 10 == 0 or i < 11:
+        print("After " + str(i) + " iterations, theta = " + str(np.round(theta,2)))
+print("After 100 iterations, theta = " + str(np.round(theta,2)))
 
 means = [feature_scaling_normalisation(i)[1] for i in [X_bmi, X_children, X_age, X_smoking, X_sex, X_region]]
 sds = [feature_scaling_normalisation(i)[2] for i in [X_bmi, X_children, X_age, X_smoking, X_sex, X_region]]
